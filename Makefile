@@ -4,7 +4,7 @@ default:
 run:
 	@docker run -it --rm -v ~/Docker/shared:/home/fresh/shared\
 		-w /home/fresh/shared/Aegis_FW \
-		ubuntu/fresh:init make
+		ubuntu/fresh:init /bin/bash
 
 runX:
 	docker run -it --rm -p 5901:5901 -e USER=root ubuntu/fresh:init \
