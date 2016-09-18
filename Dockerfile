@@ -9,12 +9,10 @@ RUN echo "fresh:1234" | chpasswd
 RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -y install vim
-RUN apt-get -y install openssh-server
 
 WORKDIR /home/fresh
 USER fresh
 
 VOLUME /home/fresh/shared
 
-EXPOSE 22222
 

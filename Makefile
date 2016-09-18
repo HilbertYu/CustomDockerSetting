@@ -2,7 +2,7 @@ default:
 	@echo "nothing"
 
 run:
-	@docker run -it -v ~/Docker/shared:/home/fresh/shared\
+	@docker run -it --rm -v ~/Docker/shared:/home/fresh/shared\
 		-p 33333:22 \
 		ubuntu/fresh:init /bin/bash
 
