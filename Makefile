@@ -1,7 +1,7 @@
 default:
 	@echo "nothing"
 
-REPO_NAME = ubuntu/fresh
+REPO_NAME = ubuntu-1604/fresh
 REPO_TAG  = init
 IMAGE_NAME = $(REPO_NAME):$(REPO_TAG)
 
