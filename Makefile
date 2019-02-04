@@ -1,8 +1,11 @@
 default:
 	@echo "nothing"
 
-REPO_NAME = ubuntu-1604/fresh
-REPO_TAG  = init
+# REPO_NAME = ubuntu-1604/fresh
+# REPO_TAG  = init-tools
+
+REPO_NAME = ubuntu/fresh
+REPO_TAG  = init-tools
 IMAGE_NAME = $(REPO_NAME):$(REPO_TAG)
 
 MOUNT_HOST= $(shell pwd)
@@ -17,6 +20,13 @@ run:
 		-w $(WORK_DIR) \
 		$(IMAGE_NAME) \
 		/bin/bash
+
+run-git:
+	@docker run  --rm  \
+		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
+		-w $(WORK_DIR) \
+		$(IMAGE_NAME) \
+		git branch
 
 runX:
 	docker run -it --rm -p 5901:5901 -e USER=root $(IMAGE_NAME) \
