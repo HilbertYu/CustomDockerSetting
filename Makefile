@@ -1,3 +1,4 @@
+
 default:
 	@echo "nothing"
 
@@ -15,8 +16,21 @@ MOUNT_GUEST= /home/fresh/shared/
 
 WORK_DIR = /home/fresh/shared/
 
+#SOCAT_CMD="socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$$'DISPLAY'\""
+
+MY_IP=$(shell ifconfig en0 |grep inet\ | awk '{print $$2}')
+
 run:
 	@docker run --rm -it  \
+		-p 55888:22 \
+		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
+		-w $(WORK_DIR) \
+		$(IMAGE_NAME) \
+		/bin/bash
+
+run-x11:
+	@docker run --rm -it  \
+		-e DISPLAY=$(MY_IP):0 \
 		-p 55888:22 \
 		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
 		-w $(WORK_DIR) \
