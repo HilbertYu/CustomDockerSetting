@@ -12,7 +12,13 @@ RUN apt-get update && apt-get install -y \
     vim \
     build-essential \
     git g++ \
-    openssh-server sudo tmux man
+    openssh-server sudo tmux man \
+    octave gnuplot-qt
+
+RUN apt-get install -y \
+       exuberant-ctags \
+       cscope \
+       silversearcher-ag
 
 WORKDIR /home/fresh
 USER fresh

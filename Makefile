@@ -6,7 +6,7 @@ default:
 
 REPO_NAME = ubuntu/fresh
 #REPO_TAG  = init-tools
-REPO_TAG  = v2
+REPO_TAG  = v4
 IMAGE_NAME = $(REPO_NAME):$(REPO_TAG)
 
 MOUNT_HOST= $(shell pwd)
@@ -16,7 +16,7 @@ MOUNT_GUEST= /home/fresh/shared/
 WORK_DIR = /home/fresh/shared/
 
 run:
-	@docker run --rm -it  \
+	@docker run -it  \
 		-p 55666:22 \
 		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
 		-w $(WORK_DIR) \
@@ -44,6 +44,11 @@ clean_all_container:
 
 clean_all_none_images:
 	@docker rmi $(shell docker images| grep none| awk '{print $$3}')
+
+
+clean_1:
+	make clean_all_container
+	make clean_all_none_images
 
 build:
 	@docker build -t="$(IMAGE_NAME)" .
