@@ -11,6 +11,7 @@ RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
     vim \
     locales \
+    htop \
     build-essential \
     git g++ \
     openssh-server sudo tmux man \
