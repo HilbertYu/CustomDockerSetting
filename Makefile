@@ -5,7 +5,8 @@ default:
 # REPO_TAG  = init-tools
 
 REPO_NAME = ubuntu/fresh
-REPO_TAG  = init-tools
+#REPO_TAG  = init-tools
+REPO_TAG  = v2
 IMAGE_NAME = $(REPO_NAME):$(REPO_TAG)
 
 MOUNT_HOST= $(shell pwd)
@@ -15,7 +16,8 @@ MOUNT_GUEST= /home/fresh/shared/
 WORK_DIR = /home/fresh/shared/
 
 run:
-	@docker run -it --rm  \
+	@docker run --rm -it  \
+		-p 55666:22 \
 		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
 		-w $(WORK_DIR) \
 		$(IMAGE_NAME) \

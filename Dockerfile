@@ -8,8 +8,11 @@ RUN echo "fresh:1234" | chpasswd
 
 RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y vim \
-    build-essential
+RUN apt-get update && apt-get install -y \
+    vim \
+    build-essential \
+    git g++ \
+    openssh-server sudo tmux man
 
 WORKDIR /home/fresh
 USER fresh
