@@ -20,8 +20,13 @@ RUN apt-get update && apt-get install -y \
     silversearcher-ag \
     valgrind
 
+RUN mkdir -p /var/run/sshd
+
 RUN echo "fresh ALL=(ALL:ALL) ALL " >> /etc/sudoers
 RUN locale-gen en_US.UTF-8
+
+RUN chsh -s /bin/bash fresh
+
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
@@ -30,7 +35,7 @@ ENV LC_ALL en_US.UTF-8
 WORKDIR /home/fresh
 USER fresh
 
-COPY ./install-dev.sh /tmp 
+COPY ./install-dev.sh /tmp
 RUN bash /tmp/install-dev.sh
 
 

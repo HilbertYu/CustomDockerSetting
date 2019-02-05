@@ -11,9 +11,9 @@ cd ~/.rcfiles-pkg && \
 
 cd ~/.rcfiles-pkg/Hsin-rcfiles && bash ./install.sh && source ~/.bashrc
 
-# cd ~/.rcfiles-pkg/Hsin-vim && \
-# 	ln -sf ~/.rcfiles-pkg/Hsin-vim ~/.vim && \
-# 	ln -sf ~/.vim/vimrc ~/.vimrc && \
-# 	cd ~/.vim && git checkout master && \
-# 	bash install.sh
+cd ~/.rcfiles-pkg/Hsin-vim && \
+ 	ln -sf ~/.rcfiles-pkg/Hsin-vim ~/.vim && \
+ 	ln -sf ~/.vim/vimrc ~/.vimrc && \
+ 	cd ~/.vim && git checkout master && \
+ 	bash install.sh
 

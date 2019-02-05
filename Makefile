@@ -23,6 +23,16 @@ run:
 		$(IMAGE_NAME) \
 		/bin/bash
 
+run-ssh:
+	@docker run  -d  \
+		--rm \
+		-u root \
+		-p 55888:22 \
+		-v $(MOUNT_HOST):$(MOUNT_GUEST) \
+		-w $(WORK_DIR) \
+		$(IMAGE_NAME) \
+		/usr/sbin/sshd -D
+
 hilbert_dk:
 	@docker run -it  \
 		-p 55888:22 \
