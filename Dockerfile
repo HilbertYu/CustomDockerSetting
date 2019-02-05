@@ -24,6 +24,8 @@ RUN mkdir -p /var/run/sshd
 
 RUN echo "fresh ALL=(ALL:ALL) ALL " >> /etc/sudoers
 RUN locale-gen en_US.UTF-8
+RUN echo "X11UseLocalHost no" >> /etc/ssh/sshd_config
+
 
 RUN chsh -s /bin/bash fresh
 
