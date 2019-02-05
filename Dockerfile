@@ -10,15 +10,20 @@ RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y \
     vim \
+    locales \
     build-essential \
     git g++ \
     openssh-server sudo tmux man \
-    octave gnuplot-qt
+    octave gnuplot-qt \
+    exuberant-ctags \
+    cscope \
+    silversearcher-ag \
+    valgrind
 
-RUN apt-get install -y \
-       exuberant-ctags \
-       cscope \
-       silversearcher-ag
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 WORKDIR /home/fresh
 USER fresh
