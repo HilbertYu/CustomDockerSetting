@@ -5,9 +5,9 @@ default:
 # REPO_NAME = ubuntu-1604/fresh
 # REPO_TAG  = init-tools
 
-REPO_NAME = ubuntu/fresh
+REPO_NAME = fresh/ubuntu
 #REPO_TAG  = init-tools
-REPO_TAG  = v2
+REPO_TAG  = v1
 IMAGE_NAME = $(REPO_NAME):$(REPO_TAG)
 
 MOUNT_HOST= $(shell pwd)

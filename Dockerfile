@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 MAINTAINER Hsin Hsuan Yu <hsinhsuanyu@gmail.com>
 
 RUN echo "root:1234" | chpasswd
@@ -6,7 +6,7 @@ RUN echo "root:1234" | chpasswd
 RUN useradd -m fresh
 RUN echo "fresh:1234" | chpasswd
 
-ARG DEBIAN_FRONTEND=noninteractive 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 
 RUN dpkg --add-architecture i386 && \
@@ -24,13 +24,12 @@ RUN dpkg --add-architecture i386 && \
     silversearcher-ag \
     valgrind \
     libxml2-dev \
-    perl-tk \
     libdbi-perl \
     libc6:i386 libstdc++6:i386 \
     cmake \
     libncurses5-dev libncursesw5-dev \
     python-dev libxml2-dev libxslt-dev \
-    python-pip
+    python3-pip
 
 RUN mkdir -p /var/run/sshd
 
