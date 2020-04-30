@@ -6,9 +6,12 @@ RUN echo "root:1234" | chpasswd
 RUN useradd -m fresh
 RUN echo "fresh:1234" | chpasswd
 
+ARG DEBIAN_FRONTEND=noninteractive 
 RUN sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y \
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y \
     vim \
     locales \
     htop \
@@ -19,17 +22,26 @@ RUN apt-get update && apt-get install -y \
     exuberant-ctags \
     cscope \
     silversearcher-ag \
-    valgrind
+    valgrind \
+    libxml2-dev \
+    perl-tk \
+    libdbi-perl \
+    libc6:i386 libstdc++6:i386 \
+    cmake \
+    libncurses5-dev libncursesw5-dev \
+    python-dev libxml2-dev libxslt-dev \
+    python-pip
 
 RUN mkdir -p /var/run/sshd
 
 RUN echo "fresh ALL=(ALL:ALL) ALL " >> /etc/sudoers
-RUN locale-gen en_US.UTF-8
 RUN echo "X11UseLocalHost no" >> /etc/ssh/sshd_config
+RUN locale-gen en_US.UTF-8
 
 
 RUN chsh -s /bin/bash fresh
 
+#RUN pip install scikit-learn pandoc
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en

@@ -16,7 +16,6 @@ MOUNT_GUEST= /home/fresh/shared/
 
 WORK_DIR = /home/fresh/shared/
 
-#SOCAT_CMD="socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$$'DISPLAY'\""
 
 MY_IP=$(shell ifconfig en0 |grep inet\ | awk '{print $$2}')
 
